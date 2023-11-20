@@ -1,0 +1,76 @@
+﻿@model PlaygroupConnect.Models.Post
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Post</h4>
+    <hr />
+    <div class="col-md-8 text-center">
+        <img src="@Url.Content("~" + Model.ImagePath)" class="img-fluid" alt="Responsive image">
+    </div>
+
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ImagePath)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ImagePath)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DateAdded)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DateAdded)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Owner)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Owner)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Content)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Content)
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <h4>Comments</h4>
+    @foreach (var comment in Model.Comments)
+    {
+        <p>@comment.Owner: @comment.Content</p>
+        <p>Posted on: @comment.Time.ToString("g")</p>
+        <!-- Display other comment properties as needed -->
+    }
+</div>
+
+<a asp-action="Index">Back to List</a>
+
+<form asp-action="AddComment" method="post">
+    <input type="hidden" name="PostId" value="@Model.Id" />
+
+  
+
+    <div class="form-group">
+        <label for="Content">Comment</label>
+        <textarea class="form-control" id="Content" name="Content" required></textarea>
+    </div>
+
+    <label for="Rating">Rating:</label>
+    <select class="form-control" id="Rating" name="Rating">
+        <option value="1">1 Star</option>
+        <option value="2">2 Stars</option>
+        <option value="3">3 Stars</option>
+        <option value="4">4 Stars</option>
+        <option value="5">5 Stars</option>
+    </select>
+
+    <button type="submit" class="btn btn-primary">Submit Comment</button>
+</form>

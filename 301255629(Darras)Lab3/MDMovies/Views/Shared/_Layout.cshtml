@@ -1,0 +1,90 @@
+﻿
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - PlaygroupConnect</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/MDMovies.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-primary border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">PlaygroupConnect</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="dropdown">
+                            <a class="nav-link dropdown-toggle" style="text-decoration:none;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Age Range
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Index">All Generes</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Index1" asp-route-genre="Action">Action</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Index1" asp-route-genre="Adventure">Adventure</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Index1" asp-route-genre="Comedy">Comedy</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Index1" asp-route-genre="Drama">Drama</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Index1" asp-route-genre="Horror">Horror</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Index1" asp-route-genre="Science Fiction">Science Fiction</a>
+                                
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Category
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="FilterByMinRating" asp-route-minRating="-1">All Movies</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="FilterByMinRating" asp-route-minRating="9">9+</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="FilterByMinRating" asp-route-minRating="8">8+</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="FilterByMinRating" asp-route-minRating="7">7+</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="FilterByMinRating" asp-route-minRating="6">6+</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="FilterByMinRating" asp-route-minRating="5">5+</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="FilterByMinRating" asp-route-minRating="4">4+</a></li>
+
+
+
+
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <partial name="_LoginPartial" />
+
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top bg-primary footer text-light text-center">
+        <div class="container">
+            &copy; PlaygroupConnect  <a asp-area="" asp-controller="Home" asp-action="Index">Home Page</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

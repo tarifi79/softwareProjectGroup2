@@ -1,0 +1,20 @@
+
+{
+    "region" : "us-east-1",
+    "configuration" : "Debug",
+    "framework"     : "net7.0",
+    "self-contained" : true,
+    "application"    : "MDMovies",
+    "environment"    : "Lab3",
+    "enable-xray"    : false,
+    "enhanced-health-type" : "basic",
+    "additional-options"   : "\"aws:autoscaling:launchconfiguration,SecurityGroups\"=\"sg-05d7e17cbf4cabea4\";\"aws:ec2:vpc,Subnets\"=\"subnet-0cad3ca4e7fea9591\"",
+    "solution-stack"       : "64bit Amazon Linux 2 v2.6.1 running .NET Core",
+    "environment-type"     : "SingleInstance",
+    "cname"                : "mdmovies",
+    "instance-type"        : "t2.micro",
+    "key-pair"             : "",
+    "instance-profile"     : "aws-elasticbeanstalk-ec2-role",
+    "service-role"         : "aws-elasticbeanstalk-service-role",
+    "proxy-server"         : "nginx"
+}
