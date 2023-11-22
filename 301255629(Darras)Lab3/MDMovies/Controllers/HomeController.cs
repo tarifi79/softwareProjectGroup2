@@ -20,6 +20,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PlaygroupConnect.Models;
 using PlaygroupConnect.ViewModels;
+using System.Security.Claims;
 
 namespace MDMovies.Controllers
 {
@@ -42,14 +43,23 @@ namespace MDMovies.Controllers
         }
 
 
-        
-        public IActionResult Index()
 
+        public IActionResult Index()
         {
-            var posts= _db.Posts.ToList();
-          
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // Get user ID
+            var posts = _db.Posts.ToList();
+
+            // Get the IDs of the user's favorite posts
+            var favoritePostIds = _db.Favorites
+                                     .Where(f => f.UserId == userId)
+                                     .Select(f => f.PostId)
+                                     .ToList();
+
+            ViewBag.FavoritePostIds = favoritePostIds; // Pass this list to the view
+
             return View(posts);
         }
+
 
         public IActionResult AddActivity()
         {
@@ -254,19 +264,19 @@ namespace MDMovies.Controllers
 
         public IActionResult Details(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // Get user ID
 
             var post = _db.Posts
-                               .Include(p => p.Comments) // Include comments
-                               .FirstOrDefault(p => p.Id == id);
+                          .Include(p => p.Comments) // Assuming you want to include comments
+                          .FirstOrDefault(p => p.Id == id);
 
             if (post == null)
             {
                 return NotFound();
             }
+
+            var isFavorite = _db.Favorites.Any(f => f.PostId == id && f.UserId == userId);
+            ViewBag.IsFavorite = isFavorite; // Pass the favorite status to the view
 
             return View(post);
         }
@@ -289,6 +299,48 @@ namespace MDMovies.Controllers
             _db.SaveChanges();
 
             return RedirectToAction("Details", new { id = PostId });
+        }
+
+        [Authorize]
+        [HttpPost]
+        public IActionResult AddToFavorites(int postId)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // Get the current user's ID
+            var favorite = new Favorite { UserId = userId, PostId = postId };
+
+            _db.Favorites.Add(favorite);
+            _db.SaveChanges();
+
+            return RedirectToAction("Details", new { id = postId });
+        }
+
+        [Authorize]
+        [HttpPost]
+        public IActionResult RemoveFromFavorites(int postId)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var favorite = _db.Favorites.FirstOrDefault(f => f.UserId == userId && f.PostId == postId);
+
+            if (favorite != null)
+            {
+                _db.Favorites.Remove(favorite);
+                _db.SaveChanges();
+            }
+
+            return RedirectToAction("Details", new { id = postId });
+        }
+
+        [HttpPost]
+        public IActionResult ReportPost(int postId)
+        {
+            var post = _db.Posts.FirstOrDefault(p => p.Id == postId);
+            if (post != null)
+            {
+                post.Reported = true;
+                _db.SaveChanges();
+            }
+
+            return RedirectToAction("Details", new { id = postId });
         }
 
 

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Desktop\\Fall2023\\COMP231_Software_Development_Project\\301255629(Darras)Lab3\\MDMovies\\PlaygroupConnect.csproj": {}
+    "C:\\Users\\User\\Desktop\\Fall2023\\COMP231_Software_Development_Project\\PojectGroup2\\301255629(Darras)Lab3\\MDMovies\\PlaygroupConnect.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Desktop\\Fall2023\\COMP231_Software_Development_Project\\301255629(Darras)Lab3\\MDMovies\\PlaygroupConnect.csproj": {
+    "C:\\Users\\User\\Desktop\\Fall2023\\COMP231_Software_Development_Project\\PojectGroup2\\301255629(Darras)Lab3\\MDMovies\\PlaygroupConnect.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\Fall2023\\COMP231_Software_Development_Project\\301255629(Darras)Lab3\\MDMovies\\PlaygroupConnect.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Desktop\\Fall2023\\COMP231_Software_Development_Project\\PojectGroup2\\301255629(Darras)Lab3\\MDMovies\\PlaygroupConnect.csproj",
         "projectName": "PlaygroupConnect",
-        "projectPath": "C:\\Users\\User\\Desktop\\Fall2023\\COMP231_Software_Development_Project\\301255629(Darras)Lab3\\MDMovies\\PlaygroupConnect.csproj",
+        "projectPath": "C:\\Users\\User\\Desktop\\Fall2023\\COMP231_Software_Development_Project\\PojectGroup2\\301255629(Darras)Lab3\\MDMovies\\PlaygroupConnect.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\Fall2023\\COMP231_Software_Development_Project\\301255629(Darras)Lab3\\MDMovies\\obj\\",
+        "outputPath": "C:\\Users\\User\\Desktop\\Fall2023\\COMP231_Software_Development_Project\\PojectGroup2\\301255629(Darras)Lab3\\MDMovies\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

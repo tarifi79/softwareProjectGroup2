@@ -5,7 +5,9 @@
 
 @model IEnumerable<PlaygroupConnect.Models.Post>
 
-
+@{
+    var favoritePostIds = ViewBag.FavoritePostIds as List<int>;
+}
 
 
 <div class="card shadow border-0 mt-4">
@@ -25,6 +27,18 @@
                         <div class="card-body">
                             <h5 class="card-title">@post.Owner</h5>
                             <p class="card-text">@post.Content</p>
+                            @if (User.Identity.IsAuthenticated && favoritePostIds.Contains(post.Id))
+                            {
+                                <!-- Display that this post is a favorite -->
+                                <i class="bi bi-heart-fill"></i> <!-- Example: Using Bootstrap Icons -->
+                            }
+                            
+                                <!-- ... other post details ... -->
+                                @if (post.Reported)
+                                {
+                                <span class="reported-icon">🚩Reported🚩</span> <!-- Example icon, you can replace it with an actual icon or image -->
+                                }
+                            
                             @if (User.Identity.IsAuthenticated)
                             {
 

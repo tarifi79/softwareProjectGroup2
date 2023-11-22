@@ -1,10 +1,10 @@
 ﻿@model PlaygroupConnect.Models.Post
 
 @{
-    ViewData["Title"] = "Details";
+    var isFavorite = ViewBag.IsFavorite as bool?;
 }
 
-<h2>Details</h2>
+
 
 <div>
     <h4>Post</h4>
@@ -40,6 +40,40 @@
         </dd>
     </dl>
 </div>
+@if (User.Identity.IsAuthenticated)
+{
+    if (isFavorite.HasValue && isFavorite.Value)
+    {
+        <form asp-action="RemoveFromFavorites" method="post">
+            <input type="hidden" name="postId" value="@Model.Id" />
+            <button type="submit" class="btn btn-secondary">
+                <i class="bi bi-heartbreak-fill"></i> Remove from Favorites
+            </button>
+        </form>
+    }
+    else
+    {
+        <form asp-action="AddToFavorites" method="post">
+            <input type="hidden" name="postId" value="@Model.Id" />
+            <button type="submit" class="btn btn-primary">
+                <i class="bi bi-heart-fill"></i> Add to Favorites
+            </button>
+        </form>
+    }
+}
+<!-- Check if the post is reported -->
+@if (Model.Reported)
+{
+    <p>This post is under review.</p>
+}
+else
+{
+    <!-- Button to report the post -->
+    <form asp-action="ReportPost" method="post">
+        <input type="hidden" name="postId" value="@Model.Id" />
+        <button type="submit" class="btn btn-warning">Report Post</button>
+    </form>
+}
 
 <div>
     <h4>Comments</h4>
