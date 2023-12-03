@@ -6,6 +6,8 @@ namespace PlaygroupConnect.Models
 {
     public class Favorite
     {
+        //Model class for Favorites
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }

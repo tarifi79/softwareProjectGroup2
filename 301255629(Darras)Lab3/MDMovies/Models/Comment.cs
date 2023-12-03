@@ -6,6 +6,8 @@ namespace MDMovies.Models
 {
     public class Comment
     {
+        //Model classes for Comments
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string CommentId { get; set; }   // Corresponds to the partition key "id"

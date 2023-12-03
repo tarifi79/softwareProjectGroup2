@@ -135,7 +135,7 @@ namespace MDMovies.Controllers
 			return View(post);
 		}
 
-
+        //Method to handle deleting
 
 		[HttpPost]
         [ValidateAntiForgeryToken]
@@ -153,6 +153,8 @@ namespace MDMovies.Controllers
             _db.SaveChanges(true);
             return RedirectToAction(nameof(Index));
         }
+
+        //Method to handle updating activities
 
         public IActionResult UpdateActivity(int? id, IFormFile ImageFile)
         {
