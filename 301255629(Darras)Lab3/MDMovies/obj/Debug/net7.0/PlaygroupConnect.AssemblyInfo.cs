@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PlaygroupConnect")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a93c9ba2f67f2a77c562cfe378c280b116aa24f4")]
 [assembly: System.Reflection.AssemblyProductAttribute("PlaygroupConnect")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PlaygroupConnect")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

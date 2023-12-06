@@ -11,7 +11,6 @@ using Amazon.S3.Model;
 using Humanizer.Localisation;
 using Microsoft.AspNetCore.Identity;
 using Newtonsoft.Json;
-using MDMovies.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using System.Globalization;
 using static Microsoft.AspNetCore.Razor.Language.TagHelperMetadata;
@@ -42,20 +41,40 @@ namespace MDMovies.Controllers
             _db = db;
         }
 
-
-
-        public IActionResult Index()
+        public IActionResult Index(string ageRange, string category, string searchTerm)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // Get user ID
-            var posts = _db.Posts.ToList();
+            var posts = _db.Posts.AsQueryable();
+            if (!string.IsNullOrEmpty(ageRange) && ageRange != "All Ages")
+            {
+                posts = posts.Where(a => a.AgeRange == ageRange);
+            }
 
-            // Get the IDs of the user's favorite posts
+            if (!string.IsNullOrEmpty(category) && category != "All Categories")
+            {
+                posts = posts.Where(a => a.Category == category);
+            }
+
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                posts = posts.Where(a => a.Content.Contains(searchTerm) || a.Title.Contains(searchTerm));
+            }
+
+
+
+
             var favoritePostIds = _db.Favorites
                                      .Where(f => f.UserId == userId)
                                      .Select(f => f.PostId)
                                      .ToList();
+            bool showFavorites = TempData["ShowFavorites"] != null && (bool)TempData["ShowFavorites"];
+            if (showFavorites)
+            {
+                posts = posts.Where(p => favoritePostIds.Contains(p.Id));
+            }
 
-            ViewBag.FavoritePostIds = favoritePostIds; // Pass this list to the view
+
+            ViewBag.FavoritePostIds = favoritePostIds; 
 
             return View(posts);
         }
@@ -110,7 +129,7 @@ namespace MDMovies.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-		public IActionResult AddActivity([Bind("Owner,Content,AgeRange,Category,DateAdded,Reported,Cost")] Post post, IFormFile ImageFile)
+		public IActionResult AddActivity([Bind("Owner,Title,Content,AgeRange,Category,DateAdded,Reported,Cost")] Post post, IFormFile ImageFile)
 		{
 			if (ModelState.IsValid)
 			{
@@ -132,7 +151,32 @@ namespace MDMovies.Controllers
 				_db.SaveChanges();
 				return RedirectToAction("Index");
 			}
-			return View(post);
+            ViewBag.AgeRange = new List<SelectListItem>
+            {
+                new SelectListItem { Text = "All Ages", Value = "All Ages"},
+                new SelectListItem { Text = "Under 1", Value = "Under 1"},
+                new SelectListItem { Text = "1-3", Value = "1-3"},
+                new SelectListItem { Text = "3-5", Value = "3-5"},
+                new SelectListItem { Text = "5-7", Value = "5-7"},
+                new SelectListItem { Text = "8-10", Value = "8-10"},
+                new SelectListItem { Text = "Over 10", Value = "Over 10"}
+            };
+
+            // Prepare Category list with 10 categories
+            ViewBag.Category = new List<SelectListItem>
+            {
+                new SelectListItem { Text = "Early Development", Value = "Early Development"},
+                new SelectListItem { Text = "Literacy and Language", Value = "Literacy and Language"},
+                new SelectListItem { Text = "Mathematics and Logic", Value = "Mathematics and Logic"},
+                new SelectListItem { Text = "Science and Nature", Value = "Science and Nature"},
+                new SelectListItem { Text = "Creative Arts", Value = "Creative Arts"},
+                new SelectListItem { Text = "Physical Development", Value = "Physical Development"},
+                new SelectListItem { Text = "Social and Emotional Learning", Value = "Social and Emotional Learning"},
+                new SelectListItem { Text = "Cultural and Global Awareness", Value = "Cultural and Global Awareness"},
+                new SelectListItem { Text = "Technology and Digital Learning", Value = "Technology and Digital Learning"},
+                new SelectListItem { Text = "Special Needs Resources", Value = "Special Needs Resources"}
+            };
+            return View(post);
 		}
 
 
@@ -200,7 +244,7 @@ namespace MDMovies.Controllers
         }
 
         [HttpPost]
-        public IActionResult UpdateActivity2([Bind("Id,Owner,Content,AgeRange,Category,DateAdded,Reported,Cost")] Post post)
+        public IActionResult UpdateActivity2([Bind("Id,Title,NumberofRatings,SumOfRating,Owner,Content,AgeRange,Category,DateAdded,Reported,Cost")] Post post)
         {
             if (ModelState.IsValid)
             {
@@ -216,7 +260,7 @@ namespace MDMovies.Controllers
         // POST: Posts/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult UpdateActivity(int id, [Bind("Id,Owner,Content,AgeRange,Category,DateAdded,Reported,Cost,ImagePath")] Post post, IFormFile ImageFile)
+        public IActionResult UpdateActivity(int id, [Bind("Id,Title,NumberofRatings,SumOfRating,Owner,Content,AgeRange,Category,DateAdded,Reported,Cost,ImagePath")] Post post, IFormFile ImageFile)
         {
             if (id != post.Id)
             {
@@ -244,7 +288,7 @@ namespace MDMovies.Controllers
 
                     _db.Update(post);
                     _db.SaveChanges();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Details", new { id = post.Id }); ;
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -258,6 +302,31 @@ namespace MDMovies.Controllers
                     }
                 }
             }
+            ViewBag.AgeRange = new List<SelectListItem>
+            {
+                new SelectListItem { Text = "All Ages", Value = "All Ages"},
+                new SelectListItem { Text = "Under 1", Value = "Under 1"},
+                new SelectListItem { Text = "1-3", Value = "1-3"},
+                new SelectListItem { Text = "3-5", Value = "3-5"},
+                new SelectListItem { Text = "5-7", Value = "5-7"},
+                new SelectListItem { Text = "8-10", Value = "8-10"},
+                new SelectListItem { Text = "Over 10", Value = "Over 10"}
+            };
+
+            // Prepare Category list with 10 categories
+            ViewBag.Category = new List<SelectListItem>
+            {
+                new SelectListItem { Text = "Early Development", Value = "Early Development"},
+                new SelectListItem { Text = "Literacy and Language", Value = "Literacy and Language"},
+                new SelectListItem { Text = "Mathematics and Logic", Value = "Mathematics and Logic"},
+                new SelectListItem { Text = "Science and Nature", Value = "Science and Nature"},
+                new SelectListItem { Text = "Creative Arts", Value = "Creative Arts"},
+                new SelectListItem { Text = "Physical Development", Value = "Physical Development"},
+                new SelectListItem { Text = "Social and Emotional Learning", Value = "Social and Emotional Learning"},
+                new SelectListItem { Text = "Cultural and Global Awareness", Value = "Cultural and Global Awareness"},
+                new SelectListItem { Text = "Technology and Digital Learning", Value = "Technology and Digital Learning"},
+                new SelectListItem { Text = "Special Needs Resources", Value = "Special Needs Resources"}
+            };
             return View(post);
         }
 
@@ -278,14 +347,29 @@ namespace MDMovies.Controllers
             var isFavorite = _db.Favorites.Any(f => f.PostId == id && f.UserId == userId);
             ViewBag.IsFavorite = isFavorite; // Pass the favorite status to the view
 
+            bool hasCommented = post.Comments.Any(c => c.Owner == _userManager.GetUserName(User));
+
+            ViewBag.HasCommented = hasCommented;
+
             return View(post);
         }
 
         [HttpPost]
         public IActionResult AddComment(int PostId, string Owner, string Content, int Rating)
         {
-            var currentUser = _userManager.GetUserName(User);//Async(User);
-            //var ownerName = currentUser.Email;
+            var currentUser = _userManager.GetUserName(User);
+            var post = _db.Posts.FirstOrDefault(p => p.Id == PostId);
+
+            if (post == null)
+            {
+                // Handle the case where the post doesn't exist
+                return NotFound();
+            }
+
+            // Update SumOfRating and NumberofRatings
+            post.SumOfRating += Rating;
+            post.NumberofRatings += 1;
+
             var comment = new Comment
             {
                 PostId = PostId,
@@ -295,6 +379,7 @@ namespace MDMovies.Controllers
                 Rating = Rating
             };
 
+            _db.Posts.Update(post);
             _db.Comments.Add(comment);
             _db.SaveChanges();
 
@@ -343,9 +428,11 @@ namespace MDMovies.Controllers
             return RedirectToAction("Details", new { id = postId });
         }
 
-        //Iteration1 Completed
-
-
+        public IActionResult ShowFavorites()
+        {
+            TempData["ShowFavorites"] = true; // Set a flag to indicate favorites should be shown
+            return RedirectToAction("Index");
+        }
 
 
 

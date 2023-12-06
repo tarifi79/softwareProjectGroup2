@@ -10,9 +10,6 @@
     <link rel="stylesheet" href="~/MDMovies.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-
-
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
 </head>
@@ -27,46 +24,51 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
                         <li class="dropdown">
                             <a class="nav-link dropdown-toggle" style="text-decoration:none;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Age Range
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Index">All Generes</a></li>
-                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Index1" asp-route-genre="Action">Action</a></li>
-                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Index1" asp-route-genre="Adventure">Adventure</a></li>
-                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Index1" asp-route-genre="Comedy">Comedy</a></li>
-                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Index1" asp-route-genre="Drama">Drama</a></li>
-                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Index1" asp-route-genre="Horror">Horror</a></li>
-                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Index1" asp-route-genre="Science Fiction">Science Fiction</a>
-                                
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Index" asp-route-agerange="All Ages">All Ages</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Index" asp-route-agerange="Under 1">Under 1</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Index" asp-route-agerange="1-3">1-3</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Index" asp-route-agerange="3-5">3-5</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Index" asp-route-agerange="5-7">5-7</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Index" asp-route-agerange="8-10">8-10</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Index" asp-route-agerange="Over 10">Over 10</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <li class="dropdown">
+                            <a class="nav-link dropdown-toggle" style="text-decoration:none;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Category
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" asp-controller="Home" asp-action="FilterByMinRating" asp-route-minRating="-1">All Movies</a></li>
-                                <li><a class="dropdown-item" asp-controller="Home" asp-action="FilterByMinRating" asp-route-minRating="9">9+</a></li>
-                                <li><a class="dropdown-item" asp-controller="Home" asp-action="FilterByMinRating" asp-route-minRating="8">8+</a></li>
-                                <li><a class="dropdown-item" asp-controller="Home" asp-action="FilterByMinRating" asp-route-minRating="7">7+</a></li>
-                                <li><a class="dropdown-item" asp-controller="Home" asp-action="FilterByMinRating" asp-route-minRating="6">6+</a></li>
-                                <li><a class="dropdown-item" asp-controller="Home" asp-action="FilterByMinRating" asp-route-minRating="5">5+</a></li>
-                                <li><a class="dropdown-item" asp-controller="Home" asp-action="FilterByMinRating" asp-route-minRating="4">4+</a></li>
-
-
-
-
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Index" asp-route-category="">All Categories</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Index" asp-route-category="Early Development">Early Development</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Index" asp-route-category="Literacy and Language">Literacy and Language</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Index" asp-route-category="Mathematics and Logic">Mathematics and Logic</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Index" asp-route-category="Science and Nature">Science and Nature</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Index" asp-route-category="Creative Arts">Creative Arts</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Index" asp-route-category="Physical Development">Physical Development</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Index" asp-route-category="Social and Emotional Learning">Social and Emotional Learning</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Index" asp-route-category="Cultural and Global Awareness">Cultural and Global Awareness</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Index" asp-route-category="Technology and Digital Learning">Technology and Digital Learning</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Index" asp-route-category="Special Needs Resources">Special Needs Resources</a></li>
                             </ul>
                         </li>
+                       
+
                     </ul>
+                    
+                  
+                    <form class="d-flex py-2 me-auto" asp-controller="Home" asp-action="Index" method="get">
+                        <input class="form-control me-sm-2" type="search" placeholder="Search" aria-label="Search" name="searchTerm">
+                        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                   
 
                     <partial name="_LoginPartial" />
-
+                    
                 </div>
             </div>
         </nav>

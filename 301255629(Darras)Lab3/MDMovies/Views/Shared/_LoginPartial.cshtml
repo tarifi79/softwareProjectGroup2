@@ -6,6 +6,9 @@
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))
 {
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="Home" asp-action="ShowFavorites"><i class="bi bi-heart-fill"></i> My Favourite</a>
+        </li>
        
         <li class="nav-item">
             <a class="nav-link k" asp-area="" asp-controller="Home" asp-action="AddActivity">Post An Activity</a>

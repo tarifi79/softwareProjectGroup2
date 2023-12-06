@@ -1,110 +1,180 @@
-﻿@model PlaygroupConnect.Models.Post
+﻿@using Microsoft.AspNetCore.Identity
+
+@model PlaygroupConnect.Models.Post
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 
 @{
     var isFavorite = ViewBag.IsFavorite as bool?;
 }
 
+<div class="container mt-4">
+   
 
+    <!-- Post Details Card -->
+    <div class="card mb-3 mt-4">
+        <div class="card-header bg-light bg-gradient m-lg-0">
+            <div class="row">
+                <div class="col-9">
+                    <i class="bi bi-card-heading"></i> Title: @Model.Title
+                </div>
+                <div class="col-3">
+                    <form asp-action="@((isFavorite.HasValue && isFavorite.Value) ? "RemoveFromFavorites" : "AddToFavorites")" method="post">
+                        <input type="hidden" name="postId" value="@Model.Id" />
+                        <button type="submit" class="btn col-12 @(isFavorite.HasValue && isFavorite.Value ? "btn-outline-dark" : "btn-outline-primary")">
+                            <i class="bi @(isFavorite.HasValue && isFavorite.Value ? "bi-heartbreak-fill" : "bi-heart-fill")"></i> @(isFavorite.HasValue && isFavorite.Value ? "Remove from" : "Add to") Favorites
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+        </div>
+        <div class="card-body">
+            <!-- Post Image -->
+            <div class="text-center">
+                <img src="@Url.Content("~" + Model.ImagePath)" class="img-fluid rounded shadow-sm" alt="Post image" style="max-width: 80%; height: auto;">
+            </div>
+            <br />
+            <br/>
+            <h5 class="card-title">Activity Details</h5>
+            <p class="card-text">@Model.Content</p>
+            <p class="card-text">
+                <small class="text-muted">
+                    <i class="bi bi-calendar-event"></i> Date Added: @Model.DateAdded.ToString("MMMM dd, yyyy")
+                </small>
+            </p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item bg-secondary text-white">
+                <i class="bi bi-stars"></i> Age Range: @Model.AgeRange
+            </li>
+            <li class="list-group-item bg-secondary text-white">
+                <i class="bi bi-bookmark-fill"></i> Category: @Model.Category
+            </li>
+            <li class="list-group-item bg-secondary text-white">
+                @if (Model.Cost > 0)
+                {
 
-<div>
-    <h4>Post</h4>
-    <hr />
-    <div class="col-md-8 text-center">
-        <img src="@Url.Content("~" + Model.ImagePath)" class="img-fluid" alt="Responsive image">
+                    <span><i class="bi bi-cash-stack"></i> Cost: $@Model.Cost</span>
+                }
+                else
+                {
+                    <span><i class="bi bi-gift"></i> Free Activity</span>
+                }
+
+            </li>
+            <li class="list-group-item bg-secondary text-white">
+                 
+                @if (Model.Rate > 0)
+                {
+                    <span><i class="bi bi-star-fill"></i> Rating: @Model.Rate out of 5 stars</span>
+                }
+                else
+                {
+                    <span><i class="bi bi-star-fill"></i> Rating: This post has not been rated yet. Be the first to rate!</span>
+                }
+            </li>
+
+        </ul>
+
+        <div class="card-footer text-muted">
+            <div class="row">
+                <div class="col-9">
+                    <i class="bi bi-flag-fill"></i> Reported: @(Model.Reported ? "Yes" : "No")
+                </div>
+                <div class="col-3">
+                    @if (!Model.Reported)
+                    {
+                        <form asp-action="ReportPost" method="post" >
+                            <input type="hidden" name="postId" value="@Model.Id" />
+                            <button type="submit" class="col-12 btn btn-outline-warning"> <i class="bi bi-flag-fill"></i> Report Post</button>
+                        </form>
+                    }
+                </div>
+            </div>
+            <i class="bi bi-person-fill"></i> Added by: @Model.Owner
+
+            
+        </div>
     </div>
 
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ImagePath)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ImagePath)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DateAdded)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DateAdded)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Owner)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Owner)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Content)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Content)
-        </dd>
-    </dl>
-</div>
-@if (User.Identity.IsAuthenticated)
-{
-    if (isFavorite.HasValue && isFavorite.Value)
-    {
-        <form asp-action="RemoveFromFavorites" method="post">
-            <input type="hidden" name="postId" value="@Model.Id" />
-            <button type="submit" class="btn btn-secondary">
-                <i class="bi bi-heartbreak-fill"></i> Remove from Favorites
-            </button>
-        </form>
+    @if(@UserManager.GetUserName(User) == @Model.Owner){
+
+    <div class="row">
+        <div class="col-6">
+            <!-- Edit button with icon -->
+            <a asp-action="UpdateActivity" asp-route-id="@Model.Id" class="w-100 btn  btn-outline-primary">
+                <i class="bi bi-pencil-square"></i> Edit
+            </a>
+        </div>
+        <div class="col-6">
+            <!-- Delete button with icon -->
+            <form asp-action="Delete" asp-route-id="@Model.Id" method="post" style="display:inline;">
+                <button type="submit" class="w-100 btn  btn-outline-danger" onclick="return confirm('Are you sure you want to delete this?');">
+                    <i class="bi bi-trash"></i> Delete
+                </button>
+            </form>
+        </div>
+    </div>
     }
-    else
-    {
-        <form asp-action="AddToFavorites" method="post">
-            <input type="hidden" name="postId" value="@Model.Id" />
-            <button type="submit" class="btn btn-primary">
-                <i class="bi bi-heart-fill"></i> Add to Favorites
-            </button>
-        </form>
-    }
-}
-<!-- Check if the post is reported -->
-@if (Model.Reported)
-{
-    <p>This post is under review.</p>
-}
-else
-{
-    <!-- Button to report the post -->
-    <form asp-action="ReportPost" method="post">
-        <input type="hidden" name="postId" value="@Model.Id" />
-        <button type="submit" class="btn btn-warning">Report Post</button>
-    </form>
-}
-
-<div>
-    <h4>Comments</h4>
-    @foreach (var comment in Model.Comments)
-    {
-        <p>@comment.Owner: @comment.Content</p>
-        <p>Posted on: @comment.Time.ToString("g")</p>
-        <!-- Display other comment properties as needed -->
-    }
-</div>
-
-<a asp-action="Index">Back to List</a>
-
-<form asp-action="AddComment" method="post">
-    <input type="hidden" name="PostId" value="@Model.Id" />
-
   
+    <br/>
 
-    <div class="form-group">
-        <label for="Content">Comment</label>
-        <textarea class="form-control" id="Content" name="Content" required></textarea>
-    </div>
+        @if (!Model.Reported)
+        {
+            <!-- Comments Section -->
+            <div class="mt-4">
+                <h4>Comments</h4>
+                @foreach (var comment in Model.Comments)
+                {
+                    <div class="border-bottom mb-2">
+                        <p>@comment.Content</p>
+                        <br />
+                        <div class="row">
+                            <div class="col-6">
+                            <p>Written by: @comment.Owner</p>
+                            </div>
+                            <div class="col-6">
+                            <p>Posted on: @comment.Time.ToString("g")</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
 
-    <label for="Rating">Rating:</label>
-    <select class="form-control" id="Rating" name="Rating">
-        <option value="1">1 Star</option>
-        <option value="2">2 Stars</option>
-        <option value="3">3 Stars</option>
-        <option value="4">4 Stars</option>
-        <option value="5">5 Stars</option>
-    </select>
+        @if (!ViewBag.HasCommented)
+        {
+            <!-- Add Comment Form -->
+            <div class="mt-4">
+                <h4>Add a Comment</h4>
+                <form asp-action="AddComment" method="post">
+                    <input type="hidden" name="PostId" value="@Model.Id" />
+                    <div class="form-group">
+                        <label for="Content">Comment</label>
+                        <textarea class="form-control" id="Content" name="Content" required></textarea>
+                    </div>
+                    <div class="form-group mt-2">
+                        <label for="Rating">Rating:</label>
+                        <select class="form-control" id="Rating" name="Rating">
+                            <option value="1">1 Star</option>
+                            <option value="2">2 Stars</option>
+                            <option value="3">3 Stars</option>
+                            <option value="4">4 Stars</option>
+                            <option value="5">5 Stars</option>
+                        </select>
+                    </div>
+                    <br />
+                    <button type="submit" class="w-100 btn btn-lg btn-primary">Submit Comment</button>
+                </form>
+            </div>
+        }
+    }
 
-    <button type="submit" class="btn btn-primary">Submit Comment</button>
-</form>
+
+
+
+    <!-- Back to List Link -->
+    <a asp-action="Index" class="btn btn-link mt-4">Back to List</a>
+</div>
+

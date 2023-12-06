@@ -25,6 +25,7 @@ namespace MDMovies.Data
             modelBuilder.Entity<Post>().HasData(
                 new Post { Id = 1, 
                     Owner = "mdarras@my.centennialcollege.ca", 
+                    Title = "Title1",
                     Content ="POST1",
                     Category ="Playing",
                     DateAdded=DateTime.Now,
@@ -36,6 +37,7 @@ namespace MDMovies.Data
                 new Post
                 {
                     Id = 2,
+                    Title="Title2",
                     Owner = "tarifi79@gmail.com",
                     Category = "Camping",
                     Content="POST2",
