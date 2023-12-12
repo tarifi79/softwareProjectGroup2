@@ -9,9 +9,9 @@ and efficient learning environment for children.
 
 ### Prerequisites
 
-Entity Framework Core
-MS SQL Server
-Microsoft.AspNetCore
+* Entity Framework Core
+* MS SQL Server
+* Microsoft.AspNetCore
 
 ## Features
 
