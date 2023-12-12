@@ -9,83 +9,81 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = PlaygroupConnect
 build_property.RootNamespace = PlaygroupConnect
-build_property.ProjectDir = C:\Users\User\Desktop\Fall2023\COMP231_Software_Development_Project\PojectGroup2\301255629(Darras)Lab3\MDMovies\
-build_property.EnableComHosting = 
-build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.ProjectDir = E:\Centennial College\Semester 5\COMP231 (Software Development Project 1)\softwareProjectGroup2\301255629(Darras)Lab3\MDMovies\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\User\Desktop\Fall2023\COMP231_Software_Development_Project\PojectGroup2\301255629(Darras)Lab3\MDMovies
+build_property.MSBuildProjectDirectory = E:\Centennial College\Semester 5\COMP231 (Software Development Project 1)\softwareProjectGroup2\301255629(Darras)Lab3\MDMovies
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/User/Desktop/Fall2023/COMP231_Software_Development_Project/PojectGroup2/301255629(Darras)Lab3/MDMovies/Areas/Identity/Pages/Account/Login.cshtml]
+[E:/Centennial College/Semester 5/COMP231 (Software Development Project 1)/softwareProjectGroup2/301255629(Darras)Lab3/MDMovies/Areas/Identity/Pages/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/Desktop/Fall2023/COMP231_Software_Development_Project/PojectGroup2/301255629(Darras)Lab3/MDMovies/Areas/Identity/Pages/Account/Logout.cshtml]
+[E:/Centennial College/Semester 5/COMP231 (Software Development Project 1)/softwareProjectGroup2/301255629(Darras)Lab3/MDMovies/Areas/Identity/Pages/Account/Logout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/Desktop/Fall2023/COMP231_Software_Development_Project/PojectGroup2/301255629(Darras)Lab3/MDMovies/Areas/Identity/Pages/Account/Register.cshtml]
+[E:/Centennial College/Semester 5/COMP231 (Software Development Project 1)/softwareProjectGroup2/301255629(Darras)Lab3/MDMovies/Areas/Identity/Pages/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/Desktop/Fall2023/COMP231_Software_Development_Project/PojectGroup2/301255629(Darras)Lab3/MDMovies/Areas/Identity/Pages/Account/_ViewImports.cshtml]
+[E:/Centennial College/Semester 5/COMP231 (Software Development Project 1)/softwareProjectGroup2/301255629(Darras)Lab3/MDMovies/Areas/Identity/Pages/Account/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfVmlld0ltcG9ydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/Desktop/Fall2023/COMP231_Software_Development_Project/PojectGroup2/301255629(Darras)Lab3/MDMovies/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
+[E:/Centennial College/Semester 5/COMP231 (Software Development Project 1)/softwareProjectGroup2/301255629(Darras)Lab3/MDMovies/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/Desktop/Fall2023/COMP231_Software_Development_Project/PojectGroup2/301255629(Darras)Lab3/MDMovies/Areas/Identity/Pages/_ViewImports.cshtml]
+[E:/Centennial College/Semester 5/COMP231 (Software Development Project 1)/softwareProjectGroup2/301255629(Darras)Lab3/MDMovies/Areas/Identity/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/Desktop/Fall2023/COMP231_Software_Development_Project/PojectGroup2/301255629(Darras)Lab3/MDMovies/Areas/Identity/Pages/_ViewStart.cshtml]
+[E:/Centennial College/Semester 5/COMP231 (Software Development Project 1)/softwareProjectGroup2/301255629(Darras)Lab3/MDMovies/Areas/Identity/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/Desktop/Fall2023/COMP231_Software_Development_Project/PojectGroup2/301255629(Darras)Lab3/MDMovies/Views/Home/AddActivity.cshtml]
+[E:/Centennial College/Semester 5/COMP231 (Software Development Project 1)/softwareProjectGroup2/301255629(Darras)Lab3/MDMovies/Views/Home/AddActivity.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZGRBY3Rpdml0eS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/Desktop/Fall2023/COMP231_Software_Development_Project/PojectGroup2/301255629(Darras)Lab3/MDMovies/Views/Home/Details.cshtml]
+[E:/Centennial College/Semester 5/COMP231 (Software Development Project 1)/softwareProjectGroup2/301255629(Darras)Lab3/MDMovies/Views/Home/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/Desktop/Fall2023/COMP231_Software_Development_Project/PojectGroup2/301255629(Darras)Lab3/MDMovies/Views/Home/Index.cshtml]
+[E:/Centennial College/Semester 5/COMP231 (Software Development Project 1)/softwareProjectGroup2/301255629(Darras)Lab3/MDMovies/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/Desktop/Fall2023/COMP231_Software_Development_Project/PojectGroup2/301255629(Darras)Lab3/MDMovies/Views/Home/UpdateActivity.cshtml]
+[E:/Centennial College/Semester 5/COMP231 (Software Development Project 1)/softwareProjectGroup2/301255629(Darras)Lab3/MDMovies/Views/Home/UpdateActivity.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxVcGRhdGVBY3Rpdml0eS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/Desktop/Fall2023/COMP231_Software_Development_Project/PojectGroup2/301255629(Darras)Lab3/MDMovies/Views/Shared/Error.cshtml]
+[E:/Centennial College/Semester 5/COMP231 (Software Development Project 1)/softwareProjectGroup2/301255629(Darras)Lab3/MDMovies/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/Desktop/Fall2023/COMP231_Software_Development_Project/PojectGroup2/301255629(Darras)Lab3/MDMovies/Views/Shared/_AddFav.cshtml]
+[E:/Centennial College/Semester 5/COMP231 (Software Development Project 1)/softwareProjectGroup2/301255629(Darras)Lab3/MDMovies/Views/Shared/_AddFav.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZGRGYXYuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/Desktop/Fall2023/COMP231_Software_Development_Project/PojectGroup2/301255629(Darras)Lab3/MDMovies/Views/Shared/_LoginPartial.cshtml]
+[E:/Centennial College/Semester 5/COMP231 (Software Development Project 1)/softwareProjectGroup2/301255629(Darras)Lab3/MDMovies/Views/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/Desktop/Fall2023/COMP231_Software_Development_Project/PojectGroup2/301255629(Darras)Lab3/MDMovies/Views/Shared/_ValidationScriptsPartial.cshtml]
+[E:/Centennial College/Semester 5/COMP231 (Software Development Project 1)/softwareProjectGroup2/301255629(Darras)Lab3/MDMovies/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/Desktop/Fall2023/COMP231_Software_Development_Project/PojectGroup2/301255629(Darras)Lab3/MDMovies/Views/_ViewImports.cshtml]
+[E:/Centennial College/Semester 5/COMP231 (Software Development Project 1)/softwareProjectGroup2/301255629(Darras)Lab3/MDMovies/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/Desktop/Fall2023/COMP231_Software_Development_Project/PojectGroup2/301255629(Darras)Lab3/MDMovies/Views/_ViewStart.cshtml]
+[E:/Centennial College/Semester 5/COMP231 (Software Development Project 1)/softwareProjectGroup2/301255629(Darras)Lab3/MDMovies/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/Desktop/Fall2023/COMP231_Software_Development_Project/PojectGroup2/301255629(Darras)Lab3/MDMovies/Views/Shared/_Layout.cshtml]
+[E:/Centennial College/Semester 5/COMP231 (Software Development Project 1)/softwareProjectGroup2/301255629(Darras)Lab3/MDMovies/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-4gqscvwehm

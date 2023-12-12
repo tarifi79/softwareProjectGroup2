@@ -41,10 +41,11 @@ namespace MDMovies.Controllers
             _db = db;
         }
 
-        public IActionResult Index(string ageRange, string category, string searchTerm)
+        public IActionResult Index(string ageRange, string category, string rating, string searchTerm)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // Get user ID
             var posts = _db.Posts.AsQueryable();
+
             if (!string.IsNullOrEmpty(ageRange) && ageRange != "All Ages")
             {
                 posts = posts.Where(a => a.AgeRange == ageRange);
@@ -55,13 +56,15 @@ namespace MDMovies.Controllers
                 posts = posts.Where(a => a.Category == category);
             }
 
+            if (!string.IsNullOrEmpty(rating) && rating != "All Categories")
+            {
+                posts = posts.Where(a => a.SumOfRating.ToString() == rating);
+            }
+
             if (!string.IsNullOrEmpty(searchTerm))
             {
                 posts = posts.Where(a => a.Content.Contains(searchTerm) || a.Title.Contains(searchTerm));
             }
-
-
-
 
             var favoritePostIds = _db.Favorites
                                      .Where(f => f.UserId == userId)
@@ -72,7 +75,6 @@ namespace MDMovies.Controllers
             {
                 posts = posts.Where(p => favoritePostIds.Contains(p.Id));
             }
-
 
             ViewBag.FavoritePostIds = favoritePostIds; 
 
@@ -107,6 +109,16 @@ namespace MDMovies.Controllers
                 new SelectListItem { Text = "Cultural and Global Awareness", Value = "Cultural and Global Awareness"},
                 new SelectListItem { Text = "Technology and Digital Learning", Value = "Technology and Digital Learning"},
                 new SelectListItem { Text = "Special Needs Resources", Value = "Special Needs Resources"}
+            };
+
+            // Prepare Rating list
+            ViewBag.Rating = new List<SelectListItem>
+            {
+                new SelectListItem { Text = "1 Stars", Value = "1-Stars"},
+                new SelectListItem { Text = "2 Stars", Value = "2-Stars"},
+                new SelectListItem { Text = "3 Stars", Value = "3-Stars"},
+                new SelectListItem { Text = "4 Stars", Value = "4-Stars"},
+                new SelectListItem { Text = "5 Stars", Value = "5-Stars"}
             };
             return View();
         }
@@ -190,8 +202,6 @@ namespace MDMovies.Controllers
             {
                 return NotFound();
             }
-
-
 
             _db.Posts.Remove(post);
             _db.SaveChanges(true);
@@ -435,21 +445,5 @@ namespace MDMovies.Controllers
             TempData["ShowFavorites"] = true; // Set a flag to indicate favorites should be shown
             return RedirectToAction("Index");
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }

@@ -56,7 +56,19 @@
                                 <li><a class="dropdown-item" asp-controller="Home" asp-action="Index" asp-route-category="Special Needs Resources">Special Needs Resources</a></li>
                             </ul>
                         </li>
-                       
+                        <li class="dropdown">
+                            <a class="nav-link dropdown-toggle" style="text-decoration:none;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Rating
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Index" asp-route-rating="">All Ratings</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Index" asp-route-rating="1">1 Stars</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Index" asp-route-rating="2">2 Stars</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Index" asp-route-rating="3">3 Stars</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Index" asp-route-rating="4">4 Stars</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Index" asp-route-rating="5">5 Stars</a></li>
+                            </ul>
+                        </li>
 
                     </ul>
                     
