@@ -437,7 +437,11 @@ namespace MDMovies.Controllers
         }
 
 
-
+        public IActionResult Cancel()
+        {
+            // Redirect to another page
+            return RedirectToAction("Index"); // Replace "Index" with the desired action
+        }
 
 
 
