@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ITM0RK9VEYtuZXEmXidtlci0iYWzefUI6GtKGY8Kmp4=",
+  "Hash": "lXmUvm1YDVtF1B8sdBLZIUYH6DekEVjmtXrHFUWIvvo=",
   "Source": "PlaygroupConnect",
   "BasePath": "_content/PlaygroupConnect",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\C#_Projects\\softwareProject\\301255629(Darras)Lab3\\MDMovies\\wwwroot\\images\\fancy-login.html",
+      "SourceId": "PlaygroupConnect",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\C#_Projects\\softwareProject\\301255629(Darras)Lab3\\MDMovies\\wwwroot\\",
+      "BasePath": "_content/PlaygroupConnect",
+      "RelativePath": "images/fancy-login.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\fancy-login.html"
     },
     {
       "Identity": "C:\\C#_Projects\\softwareProject\\301255629(Darras)Lab3\\MDMovies\\wwwroot\\images\\Im00001.png",

@@ -67,7 +67,17 @@
                     <!-- Include other fields like Cost, DateAdded, Reported -->
                     <br/>
                     <div class="form-group">
-                        <input type="submit" value="Save Updates" class="w-100 btn btn-lg btn-primary" />
+                        <div class="row">
+                            <div class="col-4">
+                                <input type="submit" value="Create" class="w-100 btn btn-lg btn-primary" />
+                            </div>
+                            <div class="col-4">
+                                <input type="reset" value="Reset" class="w-100 btn btn-lg btn-primary" />
+                            </div>
+                            <div class="col-4">
+                                <a asp-action="Cancel" class="w-100 btn btn-lg btn-primary">Cancel</a>
+                            </div>
+                        </div>
                     </div>
                 </form>
             </div>
