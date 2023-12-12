@@ -32,7 +32,9 @@ namespace MDMovies.Data
                     Reported=false,
                     AgeRange="1-3",
                     Cost=0,
-                    ImagePath=""
+                    ImagePath="",
+                    NumberofRatings = 0,
+                    SumOfRating = 0
                 },
                 new Post
                 {
@@ -45,8 +47,12 @@ namespace MDMovies.Data
                     Reported = false,
                     AgeRange="3-5",
                     Cost = 99.99,
-                    ImagePath = ""
+                    ImagePath = "",
+                    NumberofRatings = 0,
+                    SumOfRating=0
+
                 }
+
                 );
 
         }
